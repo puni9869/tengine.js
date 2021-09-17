@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>T-Engine JS</title>
+</head>
+
+<body>
+  <script src="./tengine.js"> </script>
+  <script type="text/javascript">
+
+    var template = `{{# if(this.showSkills) { #}} 
+        {{# for(var index in this.skills) { #}} 
+        Skill:  {{# this.skills[index] #}} 
+        <p> Template   </p>
+        {{# } #}} 
+      
+        {{# } else { #}} 
+        {{# this.moreSkills #}}
+      {{# } #}}`.trim();
+
+    console.log(TemplateEngine(template, {
+      skills: ["js", "html", "css"],
+      showSkills: true,
+      moreSkills: false
+    }));
+
+  </script>
+</body>
+
+</html>
