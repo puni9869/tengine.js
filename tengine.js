@@ -10,14 +10,13 @@ var TemplateEngine =(html, options)=>{
 			(code += line != '' ? 'r.push("' + line.replace(/"/g, '\\"') + '");\n' : '');
 		return add;
 	}
-    while (match = re.exec(html)) {
-        console.log(match);
+    	while (match = re.exec(html)) {
 		add(html.slice(cursor, match.index))(match[1], true);
 		cursor = match.index + match[0].length;
 	}
 	add(html.substr(cursor, html.length - cursor));
     code = (code + 'return r.join(""); }').replace(/[\r\t\n]/g, ' ');
-    console.log(code);
+   
     try {
         result = new Function('obj', code).apply(options, [options]);
     }
